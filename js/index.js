@@ -53,53 +53,53 @@ function renderLeadsText(){
 
 
 
-/////////////////////////////////////////////////////////////////
-let boxPicker = document.querySelector("#silly-box") 
+// /////////////////////////////////////////////////////////////////
+// let boxPicker = document.querySelector("#silly-box") 
 
-boxPicker.addEventListener("click", function(){
-    console.log("I want to open the silly box!")
-})
-
-
-const basePrice = 520
-const discount = 120
-let shippingCost= 12
-let shippingTIme= "5-12 days"
-
-shippingCost = 15
-shippingTIme = "7-14 days"
-
-let fullPrice = basePrice - discount + shippingCost
-
-console.log("total cost: "+fullPrice + "it will arrive on "+shippingTIme)
+// boxPicker.addEventListener("click", function(){
+//     console.log("I want to open the silly box!")
+// })
 
 
+// const basePrice = 520
+// const discount = 120
+// let shippingCost= 12
+// let shippingTIme= "5-12 days"
 
+// shippingCost = 15
+// shippingTIme = "7-14 days"
 
+// let fullPrice = basePrice - discount + shippingCost
 
-const container = document.querySelector("#container");
-container.innerHTML = "<button onclick='buy()'>Buy</button>";
-
-function buy() {
-    container.innerHTML += "<p>Thank you for buying!</p>";
-}
-
-
-const recipient = "james"
-let sender = "thiago"
-
-const email = `<p> 
-                 hey  ${recipient}!
-                 how is it going? 
-                 cheers  ${sender} 
-               </p>`
+// console.log("total cost: "+fullPrice + "it will arrive on "+shippingTIme)
 
 
 
 
 
-// for (let i = 0; i<myLeads.length; i++) {
-//     const li = document.createElement("li")
-//     li.textContent = myLeads[i]
-//     ulEl.append(li)
+// const container = document.querySelector("#container");
+// container.innerHTML = "<button onclick='buy()'>Buy</button>";
+
+// function buy() {
+//     container.innerHTML += "<p>Thank you for buying!</p>";
 // }
+
+
+// const recipient = "james"
+// let sender = "thiago"
+
+// const email = `<p> 
+//                  hey  ${recipient}!
+//                  how is it going? 
+//                  cheers  ${sender} 
+//                </p>`
+
+
+
+
+
+// // for (let i = 0; i<myLeads.length; i++) {
+// //     const li = document.createElement("li")
+// //     li.textContent = myLeads[i]
+// //     ulEl.append(li)
+// // }
