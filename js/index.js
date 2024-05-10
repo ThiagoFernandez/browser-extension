@@ -1,13 +1,23 @@
-let myLeads = [];
+let myLeads = []
 const inputEl= document.querySelector("#input-el");
 const inputBtnLink = document.querySelector("#input-btn-link");
 const inputBtnText = document.querySelector("#input-btn-text")
 const ulEl = document.querySelector("#ul-el");
 
+let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+
+if ( leadsFromLocalStorage) {
+    myLeads=leadsFromLocalStorage
+    renderLeadsLink()
+    renderLeadsText()
+}
+
 inputBtnLink.addEventListener("click", function(){
     myLeads.push(inputEl.value)
     inputEl.value=""
+    localStorage.setItem("myLeads", JSON.stringify(myLeads))
     renderLeadsLink()
+    console.log(localStorage.getItem("myLeads"))
 } )
 
 function renderLeadsLink(){
