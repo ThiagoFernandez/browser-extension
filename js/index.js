@@ -1,58 +1,69 @@
-let myLeads = []
-const inputEl= document.querySelector("#input-el");
+let myLeads = [];
+const inputEl = document.querySelector("#input-el");
 const inputBtnLink = document.querySelector("#input-btn-link");
-const inputBtnText = document.querySelector("#input-btn-text")
 const ulEl = document.querySelector("#ul-el");
+const deleteBtn = document.querySelector("#delete-el");
+const tabBtn = document.querySelector("#tab-btn")
 
-let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
-if ( leadsFromLocalStorage) {
-    myLeads=leadsFromLocalStorage
-    renderLeadsLink()
-    renderLeadsText()
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage;
+    render(myLeads);
 }
 
-inputBtnLink.addEventListener("click", function(){
-    myLeads.push(inputEl.value)
-    inputEl.value=""
-    localStorage.setItem("myLeads", JSON.stringify(myLeads))
-    renderLeadsLink()
-    console.log(localStorage.getItem("myLeads"))
-} )
+tabBtn.addEventListener("click", function(){
+    chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
+        myLeads.push(tabs[0].URL)
+        localStorage.setItem("myLeads", JSON.stringify(myLeads))
+        render(myLeads)
+    })    
+})
 
-function renderLeadsLink(){
+
+function render(leads) {
     let LinklistItems = "";
-    let hrefValue = inputEl.value
-    for (let i = 0; i<myLeads.length; i++) {
-       // LinklistItems += "<li><a href=' " + myLeads[i] + "'target='_blank'>"+myLeads[i]+"</a></li>"
-       LinklistItems += `<li>
-                            <a target='_blank' href=' ${myLeads[i]} '>
-                                ${myLeads[i]}
+    for (let i = 0; i < leads.length; i++) {
+        LinklistItems += `<li>
+                            <a target='_blank' href='${leads[i]}'>
+                                ${leads[i]}
                             </a> 
-                         </li>`
+                         </li>`;
     }
-    ulEl.innerHTML += LinklistItems
+    ulEl.innerHTML = LinklistItems; 
 }
 
-inputBtnText.addEventListener("click", function(){
-    myLeads.push(inputEl.value)
-    inputEl.value=""
-    renderLeadsText()
-} )
+deleteBtn.addEventListener("dblclick", function() {
+    localStorage.clear();
+    myLeads = [];
+    render(myLeads);
+});
 
-function renderLeadsText(){
-    let TextlistItems = "";
-    for (let i = 0; i<myLeads.length; i++) {
-        TextlistItems += `
-                            <li>
-                                ${myLeads[i]}
-                            </li>
-                         `
-    }
-    ulEl.innerHTML += TextlistItems
-}
+inputBtnLink.addEventListener("click", function() {
+    myLeads.push(inputEl.value);
+    inputEl.value = "";
+    localStorage.setItem("myLeads", JSON.stringify(myLeads));
+    render(myLeads);
+});
 
 
+// inputBtnText.addEventListener("click", function(){
+//     myLeads.push(inputEl.value)
+//     inputEl.value=""
+//     renderLeadsText()
+// } )
+
+// function renderLeadsText(){
+//     let TextlistItems = "";
+//     for (let i = 0; i<myLeads.length; i++) {
+//         TextlistItems += `
+//                             <li>
+//                                 ${myLeads[i]}
+//                             </li>
+//                          `
+//     }
+//     ulEl.innerHTML += TextlistItems
+// }
 
 
 

@@ -17,6 +17,11 @@ button {
   font-weight: bold;
   border: none; }
 
+#delete-el {
+  border: 1px solid #5f9341;
+  color: #5f9341;
+  background-color: white; }
+
 ul {
   margin-top: 20px;
   list-style: none;
