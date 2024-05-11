@@ -14,7 +14,7 @@ if (leadsFromLocalStorage) {
 
 tabBtn.addEventListener("click", function(){
     chrome.tabs.query({active:true, currentWindow:true}, function(tabs){
-        myLeads.push(tabs[0].URL)
+        myLeads.push(tabs[0].url)
         localStorage.setItem("myLeads", JSON.stringify(myLeads))
         render(myLeads)
     })    
@@ -47,80 +47,3 @@ inputBtnLink.addEventListener("click", function() {
 });
 
 
-// inputBtnText.addEventListener("click", function(){
-//     myLeads.push(inputEl.value)
-//     inputEl.value=""
-//     renderLeadsText()
-// } )
-
-// function renderLeadsText(){
-//     let TextlistItems = "";
-//     for (let i = 0; i<myLeads.length; i++) {
-//         TextlistItems += `
-//                             <li>
-//                                 ${myLeads[i]}
-//                             </li>
-//                          `
-//     }
-//     ulEl.innerHTML += TextlistItems
-// }
-
-
-
-
-
-
-
-
-
-
-// /////////////////////////////////////////////////////////////////
-// let boxPicker = document.querySelector("#silly-box") 
-
-// boxPicker.addEventListener("click", function(){
-//     console.log("I want to open the silly box!")
-// })
-
-
-// const basePrice = 520
-// const discount = 120
-// let shippingCost= 12
-// let shippingTIme= "5-12 days"
-
-// shippingCost = 15
-// shippingTIme = "7-14 days"
-
-// let fullPrice = basePrice - discount + shippingCost
-
-// console.log("total cost: "+fullPrice + "it will arrive on "+shippingTIme)
-
-
-
-
-
-// const container = document.querySelector("#container");
-// container.innerHTML = "<button onclick='buy()'>Buy</button>";
-
-// function buy() {
-//     container.innerHTML += "<p>Thank you for buying!</p>";
-// }
-
-
-// const recipient = "james"
-// let sender = "thiago"
-
-// const email = `<p> 
-//                  hey  ${recipient}!
-//                  how is it going? 
-//                  cheers  ${sender} 
-//                </p>`
-
-
-
-
-
-// // for (let i = 0; i<myLeads.length; i++) {
-// //     const li = document.createElement("li")
-// //     li.textContent = myLeads[i]
-// //     ulEl.append(li)
-// // }
